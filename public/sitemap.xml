@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TODO: troque www.sandydepil.com.br pelo domínio real.
+  Se você adicionar procedimentos ou artigos novos, inclua as URLs aqui.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.sandydepil.com.br/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.sandydepil.com.br/sobre</loc><changefreq>yearly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <url><loc>https://www.sandydepil.com.br/procedimentos/limpeza-de-pele</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/rejuvenescimento-facial</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/dermaplaning</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/design-de-sobrancelhas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/epilacao-com-cera</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/drenagem-linfatica</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/massagem-redutora</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/ventosaterapia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/procedimentos/harmonizacao-de-maos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://www.sandydepil.com.br/cursos</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.sandydepil.com.br/resultados</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.sandydepil.com.br/depoimentos</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.sandydepil.com.br/produtos</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.sandydepil.com.br/contato</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://www.sandydepil.com.br/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.sandydepil.com.br/blog/como-preparar-a-pele-antes-da-depilacao</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.sandydepil.com.br/blog/com-que-frequencia-fazer-limpeza-de-pele</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.sandydepil.com.br/blog/drenagem-linfatica-o-que-esperar</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.sandydepil.com.br/blog/protetor-solar-o-passo-que-ninguem-pode-pular</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+</urlset>

@@ -1,0 +1,64 @@
+COMO ADICIONAR AS FOTOS DO SITE
+================================
+
+Basta salvar o arquivo com o nome exato indicado abaixo, na pasta indicada.
+Nao e necessario mexer em codigo — a foto entra sozinha no lugar do
+placeholder "Foto em breve".
+
+Formato: WebP (ou JPG, trocando a extensao tambem em src/data/site.js)
+Qualidade: 75 a 80. Largura maxima 1600px — arquivos maiores so pesam.
+
+
+PROCEDIMENTOS  ->  public/images/procedimentos/
+Proporcao 4:3 (ex. 1200x900)
+
+  limpeza-de-pele.webp
+  rejuvenescimento-facial.webp
+  dermaplaning.webp
+  design-de-sobrancelhas.webp
+  epilacao-com-cera.webp
+  drenagem-linfatica.webp
+  massagem-redutora.webp
+  ventosaterapia.webp
+  harmonizacao-de-maos.webp
+
+
+PRODUTOS  ->  public/images/produtos/
+Proporcao 4:3 (ex. 800x600)
+
+  protetor-solar.webp
+  sabonete-limpeza.webp
+  serum-clareador.webp
+  hidratante-corporal.webp
+  esfoliante-suave.webp
+  oleo-pos-depilatorio.webp
+
+
+ARTIGOS DO BLOG  ->  public/images/blog/
+Proporcao 16:10 (ex. 1400x875)
+
+  como-preparar-a-pele-antes-da-depilacao.webp
+  com-que-frequencia-fazer-limpeza-de-pele.webp
+  drenagem-linfatica-o-que-esperar.webp
+  protetor-solar-o-passo-que-ninguem-pode-pular.webp
+
+
+ANTES E DEPOIS  ->  public/images/resultados/
+AINDA APONTA PARA FOTOS DE BANCO DE IMAGENS.
+Essas sao as mais sensiveis: hoje sao fotos de estoque apresentadas como
+resultado de cliente. Use somente fotos com autorizacao por escrito, com
+mesmo enquadramento, iluminacao e distancia nas duas.
+Quando tiver as fotos, avise para eu fazer a troca em src/data/site.js.
+
+
+OUTRAS FOTOS JA NA RAIZ DE public/
+  hero_woman.webp      hero do desktop (1717x916 — ideal seria ~2400px)
+  banner_mobile.webp   hero do celular (941x1672)
+  atendimento.webp     secao Sobre da home (2048x1888)
+
+AINDA FALTAM (hoje sao de banco de imagens):
+  retrato da profissional  -> src/data/site.js, professional.photo
+  fundo dos cabecalhos     -> prop `image` em cada pagina
+  foto do curso            -> src/data/site.js, courses[0].image
+  feed do Instagram        -> src/data/site.js, instagramPosts
+  og-sandydepil.jpg        -> 1200x630, imagem de compartilhamento
