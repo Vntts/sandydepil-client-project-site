@@ -10,7 +10,6 @@ export default function Professional() {
         <Reveal variant="slideRight" className="lg:col-span-2">
           <div className="relative">
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lift">
-              {/* TODO: substituir por foto profissional real */}
               <img
                 src={professional.photo}
                 alt={`${professional.name} — ${professional.role}`}

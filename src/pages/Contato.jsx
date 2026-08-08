@@ -3,7 +3,6 @@ import { Clock, Instagram, MapPin, Navigation, Phone, Send } from 'lucide-react'
 import useSeo from '../hooks/useSeo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
-import FaqAccordion from '../components/FaqAccordion'
 import { business, procedures, whatsappLink } from '../data/site'
 
 const fieldClass =
@@ -97,7 +96,7 @@ export default function Contato() {
                       <p className="mt-1 text-[13.5px] leading-relaxed text-ink/75">
                         {business.address.street}
                         <br />
-                        {business.address.city} – Brasília/{business.address.state}
+                        {business.address.city} – {business.address.state}
                         <br />
                         CEP {business.address.zip}
                       </p>
@@ -253,18 +252,6 @@ export default function Contato() {
               </form>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-soft-fade section-y">
-        <div className="container-luxe">
-          <Reveal className="max-w-xl">
-            <p className="eyebrow">Antes de agendar</p>
-            <h2 className="mt-3 font-display text-[26px] leading-[1.2] text-ink sm:text-4xl">
-              Perguntas frequentes
-            </h2>
-          </Reveal>
-          <FaqAccordion />
         </div>
       </section>
     </>

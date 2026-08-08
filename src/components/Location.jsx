@@ -33,7 +33,7 @@ export default function Location() {
                     <p className="mt-1 text-[13.5px] leading-relaxed text-ink/75">
                       {business.address.street}
                       <br />
-                      {business.address.city} – Brasília/{business.address.state}
+                      {business.address.city} – {business.address.state}
                       <br />
                       CEP {business.address.zip}
                     </p>

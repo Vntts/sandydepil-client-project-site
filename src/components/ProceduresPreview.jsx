@@ -14,7 +14,7 @@ export default function ProceduresPreview() {
         <SectionHeading
           variant="inline"
           eyebrow="Procedimentos"
-          title="Faciais, corporais e tratamentos especiais"
+          title="Estética facial e corporal em Santa Maria – DF"
           description="Protocolos com técnica profissional e atenção ao seu conforto. Cada procedimento tem página própria com duração, indicações e cuidados."
         />
 

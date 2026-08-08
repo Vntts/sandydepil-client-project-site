@@ -20,7 +20,7 @@ export default function Procedimentos() {
   useSeo({
     title: activeCategory ? activeCategory.label : 'Procedimentos Estéticos',
     description:
-      'Procedimentos faciais, corporais e tratamentos especiais em Santa Maria – DF: limpeza de pele, dermaplaning, design de sobrancelhas, epilação com cera, drenagem linfática, massagem redutora e mais.',
+      'Estética facial e corporal em Santa Maria – DF: limpeza de pele, dermaplaning, design de sobrancelhas, epilação com cera e drenagem linfática.',
     path: '/procedimentos',
   })
 

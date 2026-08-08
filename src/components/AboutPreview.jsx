@@ -81,7 +81,11 @@ export default function AboutPreview() {
           <Reveal delay={0.1}>
             <div className="mt-5 space-y-4 text-[14.5px] leading-relaxed text-ink/70 lg:mt-7 lg:space-y-5 lg:text-[15px]">
               <p>
-                Desde {' '} {business.foundedYear} A <strong className="font-medium text-ink">{business.fullName}</strong> , oferece serviços de depilação e estética com atendimento humanizado, técnicas atualizadas e foco em realçar a beleza natural, promovendo autoestima, bem-estar e confiança.
+                Desde {business.foundedYear}, a{' '}
+                <strong className="font-medium text-ink">{business.fullName}</strong> atua em Santa
+                Maria – DF oferecendo serviços de depilação e estética com atendimento humanizado,
+                técnicas atualizadas e foco em realçar a beleza natural, promovendo autoestima,
+                bem-estar e confiança.
               </p>
               <p>
                 Ao longo dos anos, esse compromisso com a excelência e o atendimento humanizado

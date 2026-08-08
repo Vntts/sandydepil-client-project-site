@@ -63,11 +63,11 @@
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-rose-gradient px-7 py-3.5 text-sm font-medium tracking-wide text-white shadow-soft transition-all duration-300 hover:shadow-lift hover:brightness-105 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-rose-gradient px-7 py-3.5 text-sm font-medium tracking-wide text-white shadow-soft transition-all duration-300 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 md:hover:shadow-lift md:hover:brightness-105;
   }
 
   .btn-ghost {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-rose-300/70 bg-white/60 px-7 py-3.5 text-sm font-medium tracking-wide text-rose-600 backdrop-blur transition-all duration-300 hover:border-rose-400 hover:bg-white hover:text-rose-700 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-rose-300/70 bg-white/60 px-7 py-3.5 text-sm font-medium tracking-wide text-rose-600 backdrop-blur transition-all duration-300 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 md:hover:border-rose-400 md:hover:bg-white md:hover:text-rose-700;
   }
 
   .hairline {
@@ -109,6 +109,24 @@
     @apply mt-3 flex items-center gap-1.5 text-[11px] text-ink/35 md:hidden;
   }
 
+  /* ----------------------------------------------------------------
+     FAIXA CONTÍNUA (procedimentos, logo abaixo do hero)
+
+     Fica aqui e não no tailwind.config.js de propósito: alterar o config
+     só passa a valer depois de reiniciar o servidor de dev, e enquanto
+     isso a classe `animate-*` simplesmente não existe — a faixa aparece
+     parada, como se estivesse quebrada. Em CSS o HMR pega na hora.
+
+     A trilha tem duas cópias da lista; -50% deixa a segunda exatamente
+     onde a primeira começou, então a emenda é invisível.
+     ---------------------------------------------------------------- */
+  .marquee-track {
+    animation: marquee 52s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
   /* Espaço para a barra de ação fixa do mobile */
   .pb-actionbar {
     padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
@@ -132,6 +150,15 @@
   border-radius: 999px !important;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -141,5 +168,15 @@
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* A regra acima zera `animation-duration` de tudo com !important. Para a
+   faixa isso significaria pular direto para -50% e congelar ali, parecendo
+   defeito. Desligar a animação deixa os nomes parados e legíveis — e o
+   overflow-x mantém a faixa arrastável com o dedo. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
   }
 }

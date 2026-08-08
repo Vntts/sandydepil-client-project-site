@@ -32,7 +32,7 @@ const reasons = [
 export default function Cursos() {
   useSeo({
     title: 'Cursos de Estética e Depilação',
-    description: `Cursos ministrados pela Sandydepil em Santa Maria – DF. Formação prática com quem atua na área desde ${business.foundedYear}. Turmas reduzidas e certificado de conclusão.`,
+    description: `Cursos ministrados pela Sandydepil em Santa Maria – DF, para toda a região do Distrito Federal. Formação prática com quem atua na área desde ${business.foundedYear}.`,
     path: '/cursos',
     jsonLd: {
       '@context': 'https://schema.org',

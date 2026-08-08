@@ -16,19 +16,18 @@ export const business = {
     street: 'QR 403 Lote D Loja 05',
     city: 'Santa Maria',
     state: 'DF',
-    full: 'QR 403 Lote D Loja 05, Santa Maria – Brasília/DF',
+    full: 'QR 403 Lote D Loja 05, Santa Maria – DF',
     zip: '72503-244',
   },
   rating: 5.0,
   reviewCount: 36,
   instagram: 'https://www.instagram.com/sandydepil',
   instagramHandle: '@sandydepil',
-  // TODO: substitua pelo link do perfil real do Google Business
-  googleProfile: 'https://www.google.com/search?q=Sandydepil+Santa+Maria+DF',
-  mapsEmbed:
-    'https://www.google.com/maps?q=QR+403+Lote+D+Loja+05,+Santa+Maria,+Bras%C3%ADlia+-+DF,+72503-244&output=embed',
-  mapsDirections:
-    'https://www.google.com/maps/dir/?api=1&destination=QR+403+Lote+D+Loja+05,+Santa+Maria,+Bras%C3%ADlia+-+DF,+72503-244',
+  // Perfil real do Google Business, via CID extraído do link do Google Maps
+  googleProfile: 'https://www.google.com/maps?cid=9257600221229323941',
+  // Coordenadas exatas do pino no Google Maps (mais confiável que buscar pelo texto do endereço)
+  mapsEmbed: 'https://www.google.com/maps?q=-16.0366591,-48.0269644&z=17&output=embed',
+  mapsDirections: 'https://www.google.com/maps/dir/?api=1&destination=-16.0366591,-48.0269644',
   hours: [
     { day: 'Segunda a Sexta', time: '09h às 19h' },
     { day: 'Sábado', time: '09h às 17h' },
@@ -50,7 +49,15 @@ export const whatsappLink = (message = whatsappMessage) =>
 
 export const navLinks = [
   { label: 'Início', to: '/' },
-  { label: 'Sobre', to: '/sobre' },
+  {
+    label: 'Sobre',
+    to: '/sobre',
+    children: [
+      { label: 'Nossa história', to: '/sobre' },
+      { label: 'Depoimentos', to: '/depoimentos' },
+      { label: 'Dicas', to: '/blog' },
+    ],
+  },
   {
     label: 'Procedimentos',
     to: '/procedimentos',
@@ -63,9 +70,6 @@ export const navLinks = [
   },
   { label: 'Cursos', to: '/cursos' },
   { label: 'Resultados', to: '/resultados' },
-  { label: 'Depoimentos', to: '/depoimentos' },
-  { label: 'Produtos', to: '/produtos' },
-  { label: 'Dicas', to: '/blog' },
   { label: 'Contato', to: '/contato' },
 ]
 
@@ -114,7 +118,7 @@ export const stats = [
 ]
 
 export const credentials = [
-  { icon: 'Award', label: `Desde ${business.foundedYear}`, detail: 'Mais de uma década em Santa Maria' },
+  { icon: 'Award', label: `Desde ${business.foundedYear}`, detail: 'Mais de uma década em Santa Maria – DF' },
   { icon: 'Star', label: 'Nota 5,0 no Google', detail: `${business.reviewCount} avaliações verificadas` },
   { icon: 'ShieldCheck', label: 'Protocolos de higiene', detail: 'Material esterilizado e descartável' },
   { icon: 'Gem', label: 'Produtos profissionais', detail: 'Marcas de uso exclusivo em clínica' },
@@ -124,36 +128,27 @@ export const credentials = [
 /* LINHA DO TEMPO                                                      */
 /* ------------------------------------------------------------------ */
 
-/**
- * TODO: os marcos abaixo foram redigidos a partir do histórico geral da clínica.
- * Revise as datas e substitua pelos acontecimentos reais — quanto mais específico,
- * mais credibilidade a seção transmite.
- */
+/** Marcos reais da trajetória da fundadora e da clínica. */
 export const timeline = [
   {
+    year: '2011',
+    title: 'Antes de tudo',
+    text: 'Trabalho com depilação como funcionária CLT — e começo a enxergar que poderia construir algo meu.',
+  },
+  {
     year: '2013',
-    title: 'O começo',
-    text: 'A Sandydepil abre as portas em Santa Maria com foco em depilação profissional e um compromisso claro: atender bem, uma cliente por vez.',
+    title: 'Nasce a Sandydepil',
+    text: 'Com coragem, determinação e muita vontade de aprender, abro as portas do meu próprio negócio em Santa Maria, no Distrito Federal.',
   },
   {
-    year: '2015',
-    title: 'Ampliação dos serviços',
-    text: 'Chegam os primeiros protocolos faciais. A limpeza de pele profissional passa a ser um dos atendimentos mais procurados.',
-  },
-  {
-    year: '2018',
-    title: 'Especialização corporal',
-    text: 'Drenagem linfática, massagem redutora e ventosaterapia entram no portfólio, atendendo quem busca bem-estar além da estética.',
-  },
-  {
-    year: '2021',
-    title: 'Reconhecimento das clientes',
-    text: 'A clínica consolida a nota máxima no Google, construída avaliação por avaliação, sem atalhos.',
+    year: '2017',
+    title: 'Graduação em Estética',
+    text: 'Concluo minha graduação em Embelezamento e Estética, ampliando técnicas, serviços e conhecimento.',
   },
   {
     year: `${new Date().getFullYear()}`,
     title: `${business.yearsOfExperience} anos de história`,
-    text: 'Um portfólio completo de procedimentos faciais, corporais e especiais — e milhares de atendimentos que sustentam essa trajetória.',
+    text: 'Um espaço onde beleza, cuidado e autoestima caminham juntos — e essa história ainda está sendo escrita.',
   },
 ]
 
@@ -168,14 +163,14 @@ export const timeline = [
 export const professional = {
   name: 'Sandra Ventura',
   role: 'Esteticista responsável · Fundadora',
-  photo: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=80',
+  photo: '/Especialista-sandra-ventura.webp',
   bio: [
     `Fundou a Sandydepil em ${business.foundedYear}, com pouco mais que uma maca, formação técnica e a convicção de que estética séria se faz com escuta antes da técnica.`,
     `Mais de ${business.yearsOfExperience} anos depois, segue atendendo pessoalmente e acompanhando cada protocolo do começo ao fim — é essa continuidade que permite ajustar o tratamento à resposta real da pele de cada cliente.`,
     'Mantém formação continuada em procedimentos faciais e corporais, acompanhando o que há de novo sem abandonar o que já provou funcionar.',
   ],
   credentials: [
-    'Formação técnica em Estética e Cosmética', // TODO: confirmar
+    'Graduação em Estética e Cosmética', // TODO: confirmar
     'Especialização em protocolos faciais', // TODO: confirmar
     'Capacitação em drenagem linfática e terapias corporais', // TODO: confirmar
     'Atualização contínua em produtos e técnicas profissionais',
@@ -329,7 +324,7 @@ export const procedures = [
     name: 'Epilação com Cera',
     shortName: 'Epilação com Cera',
     summary: 'Método profissional com foco em conforto, segurança e pele lisa na hora.',
-    image: '/images/procedimentos/epilacao-com-cera.webp',
+    image: '/images/procedimentos/Procedimento-corporal.webp',
     duration: '15 a 60 minutos, conforme a região',
     sessions: 'A cada 25 a 30 dias',
     benefits: ['Método profissional', 'Pele lisa imediatamente', 'Conforto e segurança'],
@@ -356,7 +351,7 @@ export const procedures = [
     name: 'Drenagem Linfática',
     shortName: 'Drenagem Linfática',
     summary: 'Manobras suaves que combatem a retenção de líquidos e a sensação de peso.',
-    image: '/images/procedimentos/drenagem-linfatica.webp',
+    image: '/images/procedimentos/Procedimento-corporal.webp',
     duration: '50 a 60 minutos',
     sessions: 'Séries de 10 sessões, 1 a 2 por semana',
     benefits: ['Redução de retenção de líquidos', 'Bem-estar corporal'],
@@ -383,7 +378,7 @@ export const procedures = [
     name: 'Massagem Redutora de Medidas',
     shortName: 'Massagem Redutora',
     summary: 'Modelagem corporal com pressão firme para auxiliar no contorno do corpo.',
-    image: '/images/procedimentos/massagem-redutora.webp',
+    image: '/images/procedimentos/Procedimento-corporal.webp',
     duration: '50 a 60 minutos',
     sessions: 'Séries de 10 sessões, 2 por semana',
     benefits: ['Modelagem corporal', 'Auxílio estético'],
@@ -410,7 +405,7 @@ export const procedures = [
     name: 'Ventosaterapia',
     shortName: 'Ventosaterapia',
     summary: 'Terapia de sucção que relaxa a musculatura e estimula a circulação.',
-    image: '/images/procedimentos/ventosaterapia.webp',
+    image: '/images/procedimentos/Procedimento-corporal.webp',
     duration: '40 minutos',
     sessions: 'Semanal ou conforme avaliação',
     benefits: ['Relaxamento muscular', 'Melhora da circulação'],
@@ -437,7 +432,7 @@ export const procedures = [
     name: 'Harmonização de Mãos',
     shortName: 'Harmonização de Mãos',
     summary: 'Protocolo de rejuvenescimento e hidratação profunda para as mãos.',
-    image: '/images/procedimentos/harmonizacao-de-maos.webp',
+    image: '/images/procedimentos/Procedimentos-especiais.webp',
     duration: '45 minutos',
     sessions: 'Mensal',
     benefits: ['Rejuvenescimento', 'Hidratação', 'Cuidados específicos'],
@@ -548,60 +543,6 @@ export const courseLink = (course) => {
 }
 
 /* ------------------------------------------------------------------ */
-/* PRODUTOS                                                            */
-/* ------------------------------------------------------------------ */
-
-/**
- * TODO: substitua pelos produtos realmente comercializados na clínica,
- * com fotos próprias. Preços foram deixados de fora de propósito — assim
- * o site não precisa ser atualizado a cada reajuste.
- */
-export const products = [
-  {
-    name: 'Protetor Solar Facial',
-    category: 'Proteção diária',
-    description:
-      'O item mais importante de qualquer rotina. Textura leve, sem aspecto oleoso, indicado para uso sob maquiagem.',
-    image: '/images/produtos/protetor-solar.webp',
-  },
-  {
-    name: 'Sabonete de Limpeza Facial',
-    category: 'Limpeza',
-    description:
-      'Higienização sem agredir a barreira cutânea. Escolhido conforme o seu tipo de pele durante o atendimento.',
-    image: '/images/produtos/sabonete-limpeza.webp',
-  },
-  {
-    name: 'Sérum Clareador',
-    category: 'Tratamento',
-    description:
-      'Ativos concentrados para manter em casa os resultados dos protocolos de rejuvenescimento e clareamento.',
-    image: '/images/produtos/serum-clareador.webp',
-  },
-  {
-    name: 'Hidratante Corporal',
-    category: 'Corporal',
-    description:
-      'Hidratação prolongada, essencial na manutenção entre sessões de epilação para prevenir foliculite.',
-    image: '/images/produtos/hidratante-corporal.webp',
-  },
-  {
-    name: 'Esfoliante Suave',
-    category: 'Manutenção',
-    description:
-      'Renovação celular no ritmo certo. Uso semanal, sempre com orientação de frequência conforme a sua pele.',
-    image: '/images/produtos/esfoliante-suave.webp',
-  },
-  {
-    name: 'Óleo Pós-Depilatório',
-    category: 'Pós-procedimento',
-    description:
-      'Acalma e reduz a vermelhidão logo após a epilação, prolongando o conforto da pele recém-depilada.',
-    image: '/images/produtos/oleo-pos-depilatorio.webp',
-  },
-]
-
-/* ------------------------------------------------------------------ */
 /* DIFERENCIAIS                                                        */
 /* ------------------------------------------------------------------ */
 
@@ -619,7 +560,7 @@ export const differentials = [
   {
     icon: 'Award',
     title: `Mais de ${business.yearsOfExperience} Anos de Experiência`,
-    text: `Atuação contínua desde ${business.foundedYear}, com técnica refinada ao longo do tempo.`,
+    text: `Atuação contínua no Distrito Federal desde ${business.foundedYear}, com técnica refinada ao longo do tempo.`,
   },
   {
     icon: 'ShieldCheck',

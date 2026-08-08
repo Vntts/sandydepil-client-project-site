@@ -42,7 +42,7 @@ export default function WhyUs() {
               {business.yearsOfExperience} anos no mesmo bairro dizem mais que qualquer promessa.
             </h2>
             <p className="mt-5 text-[14.5px] leading-relaxed text-ink/65">
-              Negócio de estética que atravessa uma década em Santa Maria não sobrevive de
+              Negócio de estética que atravessa uma década em Santa Maria – DF não sobrevive de
               publicidade. Sobrevive de cliente que volta e de cliente que indica.
             </p>
           </Reveal>

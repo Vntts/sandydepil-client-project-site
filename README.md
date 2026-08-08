@@ -22,16 +22,15 @@ npm run preview    # pré-visualiza o build
 
 | Rota | Conteúdo |
 |---|---|
-| `/` | Home — hero, números, apresentação, categorias, resultados, diferenciais, experiência, avaliações, Instagram, localização |
-| `/sobre` | História, linha do tempo 2013→hoje, perfil da profissional, missão/visão/valores, diferenciais |
+| `/` | Home — hero, números, apresentação, categorias, resultados, cursos, avaliações |
+| `/sobre` | História, linha do tempo 2013→hoje, perfil da profissional, diferenciais, como é o atendimento |
 | `/procedimentos` | Índice filtrável por categoria + FAQ |
 | `/procedimentos/:slug` | Página individual (9 procedimentos): descrição, indicações, duração, cuidados, antes/depois, relacionados |
 | `/cursos` | Índice dos cursos ministrados pela Sandy; o card leva à landing page do curso |
 | `/resultados` | Todos os antes/depois + nota de transparência |
 | `/depoimentos` | Avaliações do Google com selo de verificação |
-| `/produtos` | Curadoria de cosméticos |
 | `/blog` e `/blog/:slug` | Seção de dicas (4 artigos iniciais) |
-| `/contato` | Formulário que abre o WhatsApp, dados, horários, mapa, FAQ |
+| `/contato` | Formulário que abre o WhatsApp, dados, horários, mapa |
 | `*` | Página 404 |
 
 ---
@@ -72,7 +71,6 @@ Todas as fotos atuais vêm de banco de imagens (Unsplash) e servem apenas como r
 | `data/site.js` → `professional.photo` | retrato profissional | 1000×1250 |
 | `data/site.js` → `procedures[].image` | 1 foto por procedimento (9) | 1400×1050 |
 | `data/site.js` → `results[]` | pares antes/depois (6) | mesmo enquadramento |
-| `data/site.js` → `products[]` | fotos dos produtos (6) | 800×600 |
 | `data/site.js` → `instagramPosts[]` | 6 posts | quadrado |
 | `data/blog.js` → `image` | capa de cada artigo | 1400×900 |
 | `components/PageHero` (nas páginas) | fundo de cada página interna | 2000×1000 |
@@ -90,7 +88,6 @@ Salve em `public/images/` e troque a URL pelo caminho local, ex.: `/images/proce
 | `data/site.js` → `timeline` | Marcos de 2013 a hoje foram redigidos genericamente; substitua pelos reais |
 | `data/site.js` → `procedures[]` | Duração, frequência, indicações e cuidados de cada procedimento |
 | `data/site.js` → `business.hours` | Horários de funcionamento (estimativa) — ajuste também no JSON-LD do `index.html` |
-| `data/site.js` → `products` | Produtos realmente comercializados |
 | `data/site.js` → `faqs` | Última pergunta (formas de pagamento) está sem resposta real |
 | `data/blog.js` | Os 4 artigos são conteúdo inicial informativo; revise e, se possível, reescreva na voz da clínica |
 
