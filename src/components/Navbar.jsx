@@ -115,14 +115,26 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary hidden !min-h-0 !px-6 !py-3 !text-[13px] lg:inline-flex"
-          >
-            Agendar
-          </a>
+          <div className="hidden items-center gap-4 lg:flex">
+            <a
+              href={business.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Instagram — ${business.instagramHandle}`}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-ink/60 transition-colors hover:bg-rose-50 hover:text-rose-600"
+            >
+              <Instagram size={18} strokeWidth={1.8} />
+            </a>
+
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary !min-h-0 !px-6 !py-3 !text-[13px]"
+            >
+              Agendar
+            </a>
+          </div>
 
           <button
             type="button"

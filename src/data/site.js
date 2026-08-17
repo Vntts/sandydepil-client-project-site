@@ -472,56 +472,51 @@ export const findProcedure = (slug) => procedures.find((p) => p.slug === slug)
  *
  * ⚠️ COMO APONTAR PARA A LANDING PAGE — dois modos:
  *
- * 1) LANDING EXTERNA (o caso atual: Hotmart, Kiwify, Eduzz, etc.)
+ * 1) LANDING EXTERNA (Hotmart, Kiwify, Eduzz, etc.)
  *    Preencha `externalUrl` com o link completo. O card abre em nova aba.
  *
- * 2) LANDING DENTRO DO SITE
+ * 2) LANDING DENTRO DO SITE (o caso do curso abaixo)
  *    Deixe `externalUrl` como null e preencha `slug`. O card aponta para
- *    /cursos/:slug — nesse caso será preciso criar a rota e a página.
- *
- * ⚠️ TODO OBRIGATÓRIO: substitua `externalUrl` abaixo pelo link real da
- * landing page. Enquanto estiver null, o card leva ao WhatsApp como fallback,
- * então nada quebra — mas você perde a conversão da landing.
+ *    /cursos/:slug — a rota e a página precisam existir em App.jsx.
  *
  * PARA ADICIONAR UM SEGUNDO CURSO: copie o objeto inteiro e ajuste os campos.
  * A página /cursos se adapta sozinha à quantidade (1, 2, 3+ cursos).
  */
 export const courses = [
   {
-    id: 'formacao-depilacao',
-    // TODO: cole aqui a URL da landing page já criada
-    externalUrl: "https://sandydepil-client-project.vercel.app/",
-    slug: null,
+    id: 'curso-dermaplaning',
+    // Landing interna: vive dentro do próprio site, em /cursos/dermaplaning
+    // (src/pages/CursoDermaplaning.jsx), portada do projeto solto que existia
+    // em "Sandydepil.com.br".
+    externalUrl: null,
+    slug: 'dermaplaning',
 
-    // TODO: confirmar o nome oficial do curso
-    name: 'Formação Profissional em Depilação',
-    subtitle: 'Do zero à primeira cliente atendida',
+    name: 'Curso de Dermaplaning',
+    subtitle: 'Domine a técnica que transforma a pele',
 
-    // TODO: revisar todos os campos abaixo com a Sandy
     summary:
-      'Curso presencial e prático para quem quer entrar no mercado de depilação com técnica correta, segurança e confiança desde o primeiro atendimento.',
-    image:
-      'https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1400&q=80',
-    format: 'Presencial em Santa Maria – DF',
-    duration: 'Consultar carga horária',
+      'Curso completo e prático de Dermaplaning para quem quer começar do zero na estética: técnica, materiais e como conquistar as primeiras clientes.',
+    image: '/images/cursos/dermaplaning/hero.webp',
+    format: 'Curso online, acesso vitalício',
+    duration: 'Mais de 40 aulas em módulos progressivos',
     level: 'Iniciante — não exige experiência',
-    vacancies: 'Turmas reduzidas',
+    vacancies: 'Turmas com vagas limitadas',
     certificate: true,
 
     highlights: [
-      'Prática supervisionada em modelo real',
-      'Protocolos de higiene e biossegurança',
-      'Técnica correta por região do corpo',
-      'Atendimento ao cliente e precificação',
-      'Material de apoio incluso',
-      'Certificado de conclusão',
+      'Fundamentos da pele: anatomia, indicações e contraindicações',
+      'Guia de materiais e produtos, sem equipamentos caros',
+      'Técnica de Dermaplaning passo a passo',
+      'Aula prática em modelo real',
+      'Protocolo premium para valorizar o atendimento',
+      'Como conquistar as primeiras clientes',
     ],
 
     forWho: [
-      'Quem quer começar a trabalhar na área',
+      'Quem quer começar do zero na estética',
       'Profissionais de beleza que desejam ampliar os serviços',
-      'Quem já depila mas quer corrigir a técnica',
-      'Quem busca uma fonte de renda com baixo investimento inicial',
+      'Quem busca uma fonte de renda extra sem grande investimento inicial',
+      'Quem já atua na área e quer dominar a técnica de Dermaplaning',
     ],
 
     // A autoridade de quem ensina é o principal argumento de venda

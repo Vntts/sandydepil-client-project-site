@@ -98,6 +98,16 @@ const tema = {
 }
 
 /**
+ * Cor das bolinhas indicadoras, separada de `tema` porque não depende do
+ * slide entrando ou saindo — sempre do slide atualmente visível, já que é
+ * sobre ele que elas ficam desenhadas.
+ */
+const dotTema = {
+  claro: { ativo: 'bg-rose-500', inativo: 'bg-ink/25 hover:bg-ink/45' },
+  escuro: { ativo: 'bg-white', inativo: 'bg-white/35 hover:bg-white/55' },
+}
+
+/**
  * Todo o conteúdo do banner — selos, título, texto e botões.
  *
  * Ele mora DENTRO da camada que desliza, e não solto sobre a seção. Essa é a
@@ -210,7 +220,9 @@ export default function Hero() {
     if (semMovimento) return
     const id = setInterval(() => setAtivo((i) => (i + 1) % slides.length), INTERVALO)
     return () => clearInterval(id)
-  }, [semMovimento])
+    // Reinicia a contagem sempre que o slide muda — inclusive quando a troca
+    // veio de um clique na bolinha — para não trocar de novo logo em seguida.
+  }, [semMovimento, ativo])
 
   useEffect(() => {
     // Só o banner visível fica montado, então a foto seguinte só seria baixada
@@ -280,6 +292,27 @@ export default function Hero() {
           <Conteudo slide={slide} />
         </motion.div>
       </AnimatePresence>
+
+      {/* Bolinhas indicadoras — ficam fora da camada que desliza (por isso não
+          se movem junto com a foto) e permitem pular direto para um banner
+          específico. Preparado para qualquer quantidade de slides: quando o
+          terceiro banner entrar em `slides`, mais uma bolinha aparece sozinha. */}
+      {slides.length > 1 && (
+        <div className="absolute inset-x-0 bottom-5 z-20 flex justify-center gap-2 md:bottom-8">
+          {slides.map((s, i) => (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => setAtivo(i)}
+              aria-label={`Ir para o banner ${i + 1} de ${slides.length}`}
+              aria-current={i === ativo}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === ativo ? `w-6 ${dotTema[slide.tom].ativo}` : `w-2 ${dotTema[slide.tom].inativo}`
+              }`}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Régua de altura: as camadas acima são absolutas e não empurram nada, e
           sem isso a seção só teria o min-height — num celular em paisagem, ou

@@ -12,10 +12,16 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contato from './pages/Contato'
 import NotFound from './pages/NotFound'
+import CursoDermaplaning from './pages/CursoDermaplaning'
 
 export default function App() {
   return (
     <Routes>
+      {/* Landing de venda do curso de Dermaplaning — fora do <Layout />: tem
+          cabeçalho e rodapé próprios, sem o menu de 9 itens do site
+          institucional, para manter o foco em convertê-la em vaga. */}
+      <Route path="/cursos/dermaplaning" element={<CursoDermaplaning />} />
+
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />

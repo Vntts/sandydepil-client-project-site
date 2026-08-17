@@ -4,16 +4,19 @@ import { MoveHorizontal } from 'lucide-react'
 /**
  * Slider comparativo antes/depois.
  *
- * A versão anterior escutava touchmove de forma passiva, então arrastar no
- * celular movia o divisor E rolava a página ao mesmo tempo — inutilizável.
+ * Versão anterior: só o punho de 48px reagia ao arraste. Tocar e arrastar em
+ * qualquer outro ponto da foto — o que a maioria das pessoas tenta fazer no
+ * celular, porque o punho é um alvo minúsculo perto do dedo — não movia nada.
+ * Parecia quebrado.
  *
- * Agora usa Pointer Events com captura no punho de arraste:
- *  - o punho tem `touch-action: none`, logo o gesto pertence a ele;
- *  - o container tem `touch-action: pan-y`, então a rolagem vertical da página
- *    continua funcionando normalmente ao deslizar sobre a imagem;
- *  - tocar em qualquer ponto da imagem move o divisor até ali (mais rápido que
- *    arrastar, e o alvo é a imagem inteira em vez de um punho de 44px);
- *  - setas do teclado continuam ajustando de 4 em 4%.
+ * Agora o container inteiro escuta o gesto, com Pointer Events:
+ *  - o container tem `touch-action: pan-y`, então o navegador reserva o eixo
+ *    vertical para a rolagem nativa da página e deixa o eixo horizontal livre
+ *    para o JavaScript — um arraste vertical rola a página, um arraste
+ *    horizontal move o divisor, e os dois nunca disputam o mesmo gesto;
+ *  - tocar ou pressionar em qualquer ponto da imagem já move o divisor até ali
+ *    e inicia o arraste a partir dele — não é preciso acertar o punho;
+ *  - setas do teclado, com foco no punho, continuam ajustando de 4 em 4%.
  */
 export default function BeforeAfter({ before, after, alt = 'Comparativo antes e depois' }) {
   const [position, setPosition] = useState(50)
@@ -28,12 +31,13 @@ export default function BeforeAfter({ before, after, alt = 'Comparativo antes e 
     setPosition(Math.min(100, Math.max(0, pct)))
   }, [])
 
-  const onHandleDown = (e) => {
+  const onPointerDown = (e) => {
     e.currentTarget.setPointerCapture?.(e.pointerId)
     setDragging(true)
+    updateFromClientX(e.clientX)
   }
 
-  const onHandleMove = (e) => {
+  const onPointerMove = (e) => {
     if (!dragging) return
     updateFromClientX(e.clientX)
   }
@@ -57,8 +61,11 @@ export default function BeforeAfter({ before, after, alt = 'Comparativo antes e 
   return (
     <div
       ref={containerRef}
-      onClick={(e) => updateFromClientX(e.clientX)}
-      className="relative aspect-[4/3] w-full select-none overflow-hidden rounded-2xl bg-beige"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      className="relative aspect-[4/3] w-full cursor-ew-resize select-none overflow-hidden rounded-2xl bg-beige"
       style={{ touchAction: 'pan-y' }}
     >
       {/* Depois (fundo) */}
@@ -92,18 +99,16 @@ export default function BeforeAfter({ before, after, alt = 'Comparativo antes e 
         Depois
       </span>
 
-      {/* Divisor + punho */}
+      {/* Divisor + punho — só visual e teclado agora. O arraste em si é
+          tratado pelo container inteiro logo acima, então o punho não
+          precisa mais dos próprios listeners de ponteiro (o clique nele
+          continua funcionando: o evento sobe até o container). */}
       <div
         className="pointer-events-none absolute inset-y-0 w-[2px] bg-white/90 shadow-[0_0_12px_rgba(0,0,0,0.25)]"
         style={{ left: `${position}%` }}
       >
         <button
           type="button"
-          onPointerDown={onHandleDown}
-          onPointerMove={onHandleMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-          onClick={(e) => e.stopPropagation()}
           onKeyDown={onKeyDown}
           aria-label="Arraste para comparar antes e depois"
           aria-valuenow={Math.round(position)}
@@ -111,8 +116,7 @@ export default function BeforeAfter({ before, after, alt = 'Comparativo antes e 
           aria-valuemax={100}
           role="slider"
           tabIndex={0}
-          style={{ touchAction: 'none' }}
-          className={`pointer-events-auto absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-white bg-rose-500 text-white shadow-lift transition-transform duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+          className={`pointer-events-auto absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-rose-500 text-white shadow-lift transition-transform duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
             dragging ? 'scale-110' : 'md:hover:scale-110'
           }`}
         >

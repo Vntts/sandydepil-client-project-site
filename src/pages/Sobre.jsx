@@ -3,7 +3,6 @@ import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Timeline from '../components/Timeline'
 import Professional from '../components/Professional'
-import WhyUs from '../components/WhyUs'
 import ExperienceSteps from '../components/ExperienceSteps'
 import FinalCTA from '../components/FinalCTA'
 import { business } from '../data/site'
@@ -117,7 +116,6 @@ export default function Sobre() {
 
       <Professional />
 
-      <WhyUs />
       <ExperienceSteps />
       <FinalCTA />
     </>
