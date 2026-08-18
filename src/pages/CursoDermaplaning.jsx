@@ -199,17 +199,10 @@ export default function CursoDermaplaning() {
         }`}
       >
         <div className="container-luxe flex h-[72px] items-center justify-between gap-6">
-          <a href="#top" className="flex items-center gap-3">
-            <img
-              src="/images/cursos/dermaplaning/logotipo.png"
-              alt="Logo Sandydepil"
-              className="h-10 w-10 object-contain"
-            />
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-lg tracking-wide text-ink">SANDYDEPIL</span>
-              <span className="mt-1 text-[9px] font-medium uppercase tracking-luxe text-rose-600">
-                Dermaplaning
-              </span>
+          <a href="#top" className="inline-flex flex-col leading-none">
+            <span className="font-display text-xl tracking-wide text-rose-600">SANDYDEPIL</span>
+            <span className="mt-1 text-[9px] font-medium uppercase tracking-luxe text-rose-500/80">
+              Dermaplaning
             </span>
           </a>
 
@@ -259,7 +252,12 @@ export default function CursoDermaplaning() {
         }`}
       >
         <div className="flex items-center justify-between border-b border-rose-100 px-5 py-4">
-          <span className="font-display text-lg text-ink">SANDYDEPIL</span>
+          <span className="inline-flex flex-col leading-none">
+            <span className="font-display text-lg text-rose-600">SANDYDEPIL</span>
+            <span className="mt-1 text-[9px] font-medium uppercase tracking-luxe text-rose-500/80">
+              Dermaplaning
+            </span>
+          </span>
           <button
             type="button"
             onClick={() => setMenuOpen(false)}
@@ -642,15 +640,12 @@ export default function CursoDermaplaning() {
         <footer className="bg-ink py-14 text-white/70">
           <div className="container-luxe grid gap-10 sm:grid-cols-3">
             <div>
-              <div className="flex items-center gap-3">
-                <img src="/images/cursos/dermaplaning/logotipo.png" alt="" className="h-9 w-9 object-contain" />
-                <span className="flex flex-col leading-none">
-                  <span className="font-display text-base text-white">SANDYDEPIL</span>
-                  <span className="mt-1 text-[9px] font-medium uppercase tracking-luxe text-gold-light">
-                    Dermaplaning
-                  </span>
+              <span className="inline-flex flex-col leading-none">
+                <span className="font-display text-lg text-rose-200">SANDYDEPIL</span>
+                <span className="mt-1 text-[9px] font-medium uppercase tracking-luxe text-rose-200/70">
+                  Dermaplaning
                 </span>
-              </div>
+              </span>
               <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-white/50">
                 Capacitação profissional em estética facial para mulheres que querem viver da beleza.
               </p>

@@ -498,7 +498,7 @@ export const courses = [
       'Curso completo e prático de Dermaplaning para quem quer começar do zero na estética: técnica, materiais e como conquistar as primeiras clientes.',
     image: '/images/cursos/dermaplaning/hero.webp',
     format: 'Curso online, acesso vitalício',
-    duration: 'Mais de 40 aulas em módulos progressivos',
+    duration: 'Aulas em módulos progressivos',
     level: 'Iniciante — não exige experiência',
     vacancies: 'Turmas com vagas limitadas',
     certificate: true,
