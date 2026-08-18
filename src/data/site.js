@@ -23,6 +23,7 @@ export const business = {
   reviewCount: 36,
   instagram: 'https://www.instagram.com/sandydepil',
   instagramHandle: '@sandydepil',
+  youtube: 'https://www.youtube.com/@sandydepil',
   // Perfil real do Google Business, via CID extraído do link do Google Maps
   googleProfile: 'https://www.google.com/maps?cid=9257600221229323941',
   // Coordenadas exatas do pino no Google Maps (mais confiável que buscar pelo texto do endereço)
@@ -498,7 +499,7 @@ export const courses = [
       'Curso completo e prático de Dermaplaning para quem quer começar do zero na estética: técnica, materiais e como conquistar as primeiras clientes.',
     image: '/images/cursos/dermaplaning/hero.webp',
     format: 'Curso online, acesso vitalício',
-    duration: 'Aulas em módulos progressivos',
+    duration: 'Mais de 40 aulas em módulos progressivos',
     level: 'Iniciante — não exige experiência',
     vacancies: 'Turmas com vagas limitadas',
     certificate: true,

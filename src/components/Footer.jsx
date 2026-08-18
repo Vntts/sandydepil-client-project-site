@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDown, Clock, Instagram, MapPin, Phone } from 'lucide-react'
+import { ChevronDown, Clock, Instagram, MapPin, Phone, Youtube } from 'lucide-react'
 import Logo from './Logo'
 import { business, whatsappLink } from '../data/site'
 
@@ -30,15 +30,26 @@ export default function Footer() {
             Desde {business.foundedYear} em Santa Maria – DF, atendendo o Distrito Federal. Mais de{' '}
             {business.yearsOfExperience} anos e milhares de atendimentos.
           </p>
-          <a
-            href={business.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex min-h-[42px] items-center gap-2 rounded-full border border-rose-200 bg-white/60 px-4 text-xs text-ink/70 transition-colors hover:border-rose-300 hover:text-rose-600"
-          >
-            <Instagram size={14} />
-            {business.instagramHandle}
-          </a>
+          <div className="mt-5 flex flex-wrap gap-2.5">
+            <a
+              href={business.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-rose-200 bg-white/60 px-4 text-xs text-ink/70 transition-colors hover:border-rose-300 hover:text-rose-600"
+            >
+              <Instagram size={14} />
+              {business.instagramHandle}
+            </a>
+            <a
+              href={business.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-rose-200 bg-white/60 px-4 text-xs text-ink/70 transition-colors hover:border-rose-300 hover:text-rose-600"
+            >
+              <Youtube size={14} />
+              YouTube
+            </a>
+          </div>
         </div>
 
         {/* Acordeão no celular, lista aberta a partir de md */}
