@@ -1,8 +1,11 @@
 import useSeo from '../hooks/useSeo'
 import PageHero from '../components/PageHero'
 import Results from '../components/Results'
-import Reveal from '../components/Reveal'
+import Reveal, { RevealGroup, RevealItem } from '../components/Reveal'
+import SectionHeading from '../components/SectionHeading'
+import VideoTestimonial from '../components/VideoTestimonial'
 import FinalCTA from '../components/FinalCTA'
+import { videoTestimonials } from '../data/site'
 
 export default function Resultados() {
   useSeo({
@@ -17,13 +20,38 @@ export default function Resultados() {
       <PageHero
         eyebrow="Resultados"
         title="O trabalho falando por si"
-        description="Comparativos de clientes reais, publicados com autorização. Toque ou arraste em cada imagem para ver a diferença."
+        description="Comparativos de clientes reais, publicados com autorização."
         image="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=2000&q=80"
         breadcrumbs={[{ label: 'Resultados' }]}
       />
 
       {/* Grade, não trilho: aqui a lista completa é o conteúdo da página */}
       <Results showHeading={false} asRail={false} />
+
+      {videoTestimonials.length > 0 && (
+        <section className="bg-offwhite section-y">
+          <div className="container-luxe">
+            <SectionHeading
+              variant="inline"
+              eyebrow="Depoimentos"
+              title="Quem já passou por aqui conta"
+              highlight="como foi"
+              description="Clientes reais, com as próprias palavras — sem roteiro."
+            />
+
+            <RevealGroup
+              className="mt-9 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-12 lg:grid-cols-4"
+              stagger={0.1}
+            >
+              {videoTestimonials.map((v) => (
+                <RevealItem key={v.video}>
+                  <VideoTestimonial src={v.video} poster={v.poster} name={v.name} />
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </section>
+      )}
 
       {/* Nota de transparência — sem card, como um aparte editorial */}
       <section className="bg-offwhite section-y-tight">

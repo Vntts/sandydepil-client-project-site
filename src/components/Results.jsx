@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
 import SectionHeading from './SectionHeading'
 import Reveal, { RevealGroup, RevealItem } from './Reveal'
-import BeforeAfter from './BeforeAfter'
 import RailHint from './RailHint'
 import { results } from '../data/site'
 
 /**
  * Grade de antes e depois.
  * `limit` define quantos aparecem (home mostra 3, a página mostra todos).
- * No mobile os itens ficam em trilho horizontal — três sliders empilhados
- * ocupariam mais de duas telas de rolagem.
+ * No mobile os itens ficam em trilho horizontal.
+ *
+ * Cada foto já vem com o antes e o depois compostos num arquivo só (editada
+ * pela Sandy), por isso é uma imagem simples — sem o slider de arrastar que
+ * existia antes, que dependia de duas fotos separadas por item.
  */
 export default function Results({ limit, showHeading = true, asRail = true }) {
   const items = limit ? results.slice(0, limit) : results
@@ -23,7 +25,7 @@ export default function Results({ limit, showHeading = true, asRail = true }) {
             number="01"
             eyebrow="Resultados"
             title="Antes e depois de clientes reais"
-            description="Arraste o controle de cada imagem para comparar. Todas publicadas com autorização."
+            description="Fotos reais, publicadas com autorização."
           />
         )}
 
@@ -36,7 +38,14 @@ export default function Results({ limit, showHeading = true, asRail = true }) {
           {items.map((r) => (
             <RevealItem key={r.title} variant="fadeUp" className={asRail ? 'rail-item' : ''}>
               <div className="group">
-                <BeforeAfter before={r.before} after={r.after} alt={r.title} />
+                <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-beige">
+                  <img
+                    src={r.image}
+                    alt={r.title}
+                    className="h-full w-full object-cover transition-transform duration-700 md:group-hover:scale-[1.04]"
+                    loading="lazy"
+                  />
+                </div>
                 <h3 className="mt-4 font-display text-[17px] leading-snug text-ink transition-colors duration-300 md:group-hover:text-rose-600">
                   {r.procedure ? (
                     <Link to={`/procedimentos/${r.procedure}`}>{r.title}</Link>

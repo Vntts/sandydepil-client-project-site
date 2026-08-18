@@ -666,51 +666,54 @@ export const reviews = [
 /* ------------------------------------------------------------------ */
 
 /**
- * TODO: troque as URLs por fotos reais e autorizadas em /public/images/resultados/
- * Regra de ouro: mesmo enquadramento, mesma iluminação, mesma distância nas duas fotos.
+ * Fotos reais de clientes (autorizadas), já editadas pela Sandy num arquivo só
+ * (antes e depois compostos na própria imagem — por isso um único campo
+ * `image`, sem o par before/after que o slider de arrastar usava antes).
+ *
+ * PARA ADICIONAR MAIS: salve o arquivo em /public/images/resultados/ e copie
+ * um objeto abaixo. `procedure` é opcional — quando bate com um slug de
+ * `procedures`, o título vira link para a página do procedimento.
  */
 export const results = [
   {
     title: 'Limpeza de Pele Profissional',
     procedure: 'limpeza-de-pele',
-    description: 'Redução de cravos e pele visivelmente mais uniforme após o protocolo completo.',
-    before: 'https://images.unsplash.com/photo-1614859324967-bdf413c35a55?auto=format&fit=crop&w=1000&q=80',
-    after: 'https://images.unsplash.com/photo-1620065692460-4a2e5c9f4d4c?auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    title: 'Design de Sobrancelhas com Henna',
-    procedure: 'design-de-sobrancelhas',
-    description: 'Simetria e preenchimento respeitando o formato natural do rosto.',
-    before: 'https://images.unsplash.com/photo-1583001809873-a128495da465?auto=format&fit=crop&w=1000&q=80',
-    after: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    title: 'Drenagem Linfática Corporal',
-    procedure: 'drenagem-linfatica',
-    description: 'Menos retenção de líquidos e sensação imediata de leveza.',
-    before: 'https://images.unsplash.com/photo-1611073615830-9f76e0b6cbd7?auto=format&fit=crop&w=1000&q=80',
-    after: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    title: 'Rejuvenescimento Facial',
-    procedure: 'rejuvenescimento-facial',
-    description: 'Clareamento progressivo de manchas ao longo do protocolo em série.',
-    before: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80',
-    after: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1000&q=80',
+    description: 'Redução visível de poros e cravos após o protocolo completo.',
+    image: '/images/resultados/limpeza-de-pele.webp',
   },
   {
     title: 'Dermaplaning',
     procedure: 'dermaplaning',
     description: 'Textura mais lisa e pele com aspecto imediatamente mais luminoso.',
-    before: 'https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=1000&q=80',
-    after: 'https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=1000&q=80',
+    image: '/images/resultados/dermaplaning.webp',
   },
   {
-    title: 'Harmonização de Mãos',
-    procedure: 'harmonizacao-de-maos',
-    description: 'Hidratação profunda e uniformização do tom da pele das mãos.',
-    before: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1000&q=80',
-    after: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=1000&q=80',
+    title: 'Epilação com Cera',
+    procedure: 'epilacao-com-cera',
+    description: 'Pele lisa e uniforme logo após a sessão, sem irritação.',
+    image: '/images/resultados/epilacao-com-cera.webp',
+  },
+]
+
+/**
+ * Depoimentos em vídeo — clientes reais contando a experiência com as
+ * próprias palavras. `name` é genérico porque não temos o nome de cada
+ * cliente ainda; troque por um nome real (com autorização) quando souber.
+ *
+ * PARA ADICIONAR MAIS: salve o vídeo em /public/videos/depoimentos/ e a
+ * miniatura (primeiro quadro, por exemplo) em /public/images/depoimentos/,
+ * depois copie um objeto abaixo.
+ */
+export const videoTestimonials = [
+  {
+    video: '/videos/depoimentos/depoimento-1.mp4',
+    poster: '/images/depoimentos/depoimento-1-poster.webp',
+    name: 'Cliente Sandydepil',
+  },
+  {
+    video: '/videos/depoimentos/depoimento-2.mp4',
+    poster: '/images/depoimentos/depoimento-2-poster.webp',
+    name: 'Cliente Sandydepil',
   },
 ]
 
