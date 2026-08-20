@@ -715,6 +715,11 @@ export const videoTestimonials = [
     poster: '/images/depoimentos/depoimento-2-poster.webp',
     name: 'Cliente Sandydepil',
   },
+  {
+    video: '/videos/depoimentos/depoimento-3.mp4',
+    poster: '/images/depoimentos/depoimento-3-poster.webp',
+    name: 'Cliente Sandydepil',
+  },
 ]
 
 /* ------------------------------------------------------------------ */
