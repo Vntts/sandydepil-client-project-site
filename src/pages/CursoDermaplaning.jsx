@@ -12,7 +12,8 @@ import {
 import useSeo from '../hooks/useSeo'
 import Reveal, { RevealGroup, RevealItem } from '../components/Reveal'
 import ScrollToTop from '../components/ScrollToTop'
-import { business, whatsappLink } from '../data/site'
+import VideoTestimonial from '../components/VideoTestimonial'
+import { business, whatsappLink, videoTestimonials } from '../data/site'
 
 /**
  * Landing de venda do curso de Dermaplaning — página autônoma, fora do
@@ -604,6 +605,30 @@ export default function CursoDermaplaning() {
                 </RevealItem>
               ))}
             </RevealGroup>
+
+            {videoTestimonials.length > 0 && (
+              <div className="mt-14 lg:mt-16">
+                <Reveal className="mx-auto max-w-xl text-center">
+                  <span className="text-[10px] font-medium uppercase tracking-luxe text-gold-light">
+                    ✦ Direto de quem fez o curso
+                  </span>
+                  <h3 className="mt-2 font-display text-[22px] italic text-white sm:text-[26px]">
+                    Veja e escute os relatos
+                  </h3>
+                </Reveal>
+
+                <RevealGroup
+                  className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3"
+                  stagger={0.1}
+                >
+                  {videoTestimonials.map((v) => (
+                    <RevealItem key={v.video}>
+                      <VideoTestimonial src={v.video} poster={v.poster} name={v.name} />
+                    </RevealItem>
+                  ))}
+                </RevealGroup>
+              </div>
+            )}
           </div>
         </section>
 
