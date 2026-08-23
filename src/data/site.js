@@ -11,7 +11,7 @@ export const business = {
   yearsOfExperience: new Date().getFullYear() - 2013,
   phone: '(61) 98484-3437',
   phoneRaw: '5561984843437',
-  email: 'contato@sandydepil.com.br', // TODO: confirmar e-mail real
+  email: 'sandydepil26@gmail.com',
   address: {
     street: 'QR 403 Lote D Loja 05',
     city: 'Santa Maria',

@@ -56,7 +56,7 @@ const navLinks = [
 const selosRapidos = [
   { icon: Clock, texto: '1 dia de curso' },
   { icon: Award, texto: 'Certificado inclusos' },
-  { icon: Users, texto: 'Turma pequena' },
+  { icon: Users, texto: 'Turma personalizada' },
   { icon: Sparkles, texto: 'Prática em modelo real' },
 ]
 
@@ -68,7 +68,7 @@ const modulos = [
   },
   {
     numero: '02',
-    titulo: 'Tipos de cera e quando usar cada uma',
+    titulo: 'Cera, método espanhol',
     texto: 'Cera quente, morna e em fita: vantagens de cada tipo para axilas e virilha.',
   },
   {
@@ -101,7 +101,7 @@ const beneficios = [
   },
   {
     icon: Users,
-    titulo: 'Turma pequena',
+    titulo: 'Turma personalizada',
     texto: 'Grupos reduzidos para garantir atenção individual e prática de verdade em cada aluna.',
   },
   {
@@ -207,19 +207,21 @@ function FaqItem({ item, aberto, onToggle }) {
         type="button"
         onClick={onToggle}
         aria-expanded={aberto}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4.5 text-left sm:px-6 sm:py-5"
+        className="flex min-h-[56px] w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors active:bg-rose-50/70 sm:px-6 sm:py-5"
       >
-        <span className="font-display text-[15.5px] text-ink sm:text-[16.5px]">{item.pergunta}</span>
-        <ChevronDown
-          size={19}
-          className={`shrink-0 text-rose-500 transition-transform duration-300 ${aberto ? 'rotate-180' : ''}`}
-        />
+        <span className="font-display text-[15px] leading-snug text-ink sm:text-[16.5px]">{item.pergunta}</span>
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-rose-50">
+          <ChevronDown
+            size={17}
+            className={`text-rose-500 transition-transform duration-300 ${aberto ? 'rotate-180' : ''}`}
+          />
+        </span>
       </button>
       <div
         className={`grid transition-all duration-300 ease-out ${aberto ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
-          <p className="px-5 pb-5 text-[13.5px] leading-relaxed text-ink/65 sm:px-6 sm:text-[14px]">
+          <p className="px-5 pb-4 text-[13.5px] leading-relaxed text-ink/65 sm:px-6 sm:pb-5 sm:text-[14px]">
             {item.resposta}
           </p>
         </div>
@@ -423,7 +425,7 @@ export default function CursoDepilacaoAxilasVirilha() {
               </div>
 
               <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
-                {['Certificado de conclusão', 'Turma pequena e presencial', 'Prática em modelo real'].map((b) => (
+                {['Certificado de conclusão', 'Turma personalizada e presencial', 'Prática em modelo real'].map((b) => (
                   <li key={b} className="flex items-center gap-1.5 text-[13px] font-medium text-ink/65">
                     <Check size={13} className="text-rose-500" />
                     {b}
@@ -739,15 +741,15 @@ export default function CursoDepilacaoAxilasVirilha() {
           <Reveal className="container-luxe relative mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[10.5px] font-semibold uppercase tracking-wide text-rose-600 shadow-soft">
               <Clock size={12} />
-              Vagas limitadas · Turma pequena
+              Vagas limitadas · Turma personalizada
             </span>
             <h2 className="mt-5 font-display text-[27px] leading-[1.15] text-ink sm:text-4xl lg:text-[2.9rem]">
               Sua vaga na próxima turma presencial de{' '}
               <span className="italic text-rose-500">1 dia</span> está a uma mensagem de distância
             </h2>
             <p className="mt-5 text-[14.5px] leading-relaxed text-ink/65 sm:text-base">
-              Fale com a Sandy agora pelo WhatsApp e garanta seu lugar — turma pequena, prática em
-              modelo real, certificado ao final do dia.
+              Fale com a Sandy agora pelo WhatsApp e garanta seu lugar — turma personalizada,
+              prática em modelo real, certificado ao final do dia.
             </p>
             <a
               href={whatsappCurso(MSG_PADRAO)}

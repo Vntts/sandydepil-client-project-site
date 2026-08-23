@@ -188,7 +188,7 @@ export default function CursoDermaplaning() {
         <div className="container-luxe flex items-center justify-between gap-4 text-[11px] tracking-wide">
           <span className="text-gold-light">✦ Vagas limitadas por turma</span>
           <span className="hidden text-white/70 sm:inline">
-            sandydepil26@gmail.com · {business.phone}
+            {business.email} · {business.phone}
           </span>
         </div>
       </div>
@@ -679,7 +679,7 @@ export default function CursoDermaplaning() {
             <div>
               <h4 className="text-[11px] font-semibold uppercase tracking-luxe text-white">Contato</h4>
               <ul className="mt-4 space-y-2 text-[13.5px] text-white/60">
-                <li>sandydepil26@gmail.com</li>
+                <li>{business.email}</li>
                 <li>{business.phone}</li>
               </ul>
             </div>
