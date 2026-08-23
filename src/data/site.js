@@ -499,7 +499,7 @@ export const courses = [
       'Curso completo e prático de Dermaplaning para quem quer começar do zero na estética: técnica, materiais e como conquistar as primeiras clientes.',
     image: '/images/cursos/dermaplaning/hero.webp',
     format: 'Curso online, acesso vitalício',
-    duration: 'Mais de 40 aulas em módulos progressivos',
+    duration: 'Aulas em módulos progressivos',
     level: 'Iniciante — não exige experiência',
     vacancies: 'Turmas com vagas limitadas',
     certificate: true,
@@ -521,6 +521,43 @@ export const courses = [
     ],
 
     // A autoridade de quem ensina é o principal argumento de venda
+    authorityNote: `Ministrado por quem atua na área desde ${business.foundedYear} — mais de ${business.yearsOfExperience} anos de prática diária em clínica própria, não apenas teoria.`,
+  },
+  {
+    id: 'curso-depilacao-axilas-virilha',
+    // Landing interna, presencial: vive em /cursos/depilacao-axilas-virilha
+    // (src/pages/CursoDepilacaoAxilasVirilha.jsx).
+    externalUrl: null,
+    slug: 'depilacao-axilas-virilha',
+
+    name: 'Curso de Depilação em Axilas e Virilha',
+    subtitle: 'Formação presencial em Santa Maria – DF',
+
+    summary:
+      'Curso presencial de 1 dia para aprender a técnica completa de depilação em axilas e virilha, com prática supervisionada em modelo real e certificado ao final.',
+    image: '/images/cursos/depilacao-axilas-virilha/turma-3.webp',
+    format: 'Curso presencial, em Santa Maria – DF',
+    duration: 'Curso de 1 dia · 8 horas',
+    level: 'Iniciante — não exige experiência',
+    vacancies: 'Turmas mensais com vagas limitadas',
+    certificate: true,
+
+    highlights: [
+      'Biossegurança, anatomia e indicações/contraindicações',
+      'Tipos de cera e quando usar cada uma',
+      'Técnica em axilas passo a passo',
+      'Técnica em virilha: cavado, tradicional e íntima completa',
+      'Prática supervisionada em modelo real',
+      'Precificação e como conquistar as primeiras clientes',
+    ],
+
+    forWho: [
+      'Quem quer começar do zero na estética',
+      'Profissionais de beleza que desejam ampliar os serviços',
+      'Quem busca uma fonte de renda extra sem grande investimento inicial',
+      'Quem já atua na área e quer aperfeiçoar a técnica de depilação com cera',
+    ],
+
     authorityNote: `Ministrado por quem atua na área desde ${business.foundedYear} — mais de ${business.yearsOfExperience} anos de prática diária em clínica própria, não apenas teoria.`,
   },
 ]
@@ -713,11 +750,6 @@ export const videoTestimonials = [
   {
     video: '/videos/depoimentos/depoimento-2.mp4',
     poster: '/images/depoimentos/depoimento-2-poster.webp',
-    name: 'Cliente Sandydepil',
-  },
-  {
-    video: '/videos/depoimentos/depoimento-3.mp4',
-    poster: '/images/depoimentos/depoimento-3-poster.webp',
     name: 'Cliente Sandydepil',
   },
 ]

@@ -13,14 +13,16 @@ import BlogPost from './pages/BlogPost'
 import Contato from './pages/Contato'
 import NotFound from './pages/NotFound'
 import CursoDermaplaning from './pages/CursoDermaplaning'
+import CursoDepilacaoAxilasVirilha from './pages/CursoDepilacaoAxilasVirilha'
 
 export default function App() {
   return (
     <Routes>
-      {/* Landing de venda do curso de Dermaplaning — fora do <Layout />: tem
-          cabeçalho e rodapé próprios, sem o menu de 9 itens do site
-          institucional, para manter o foco em convertê-la em vaga. */}
+      {/* Landings de venda de cursos — fora do <Layout />: têm cabeçalho e
+          rodapé próprios, sem o menu de 9 itens do site institucional, para
+          manter o foco em converter a visita em vaga. */}
       <Route path="/cursos/dermaplaning" element={<CursoDermaplaning />} />
+      <Route path="/cursos/depilacao-axilas-virilha" element={<CursoDepilacaoAxilasVirilha />} />
 
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
