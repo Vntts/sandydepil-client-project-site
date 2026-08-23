@@ -160,6 +160,24 @@ const fotosAulas = [
     caption: 'Sandy com alunas no espaço da Sandydepil',
     position: 'object-top',
   },
+  {
+    src: '/images/cursos/depilacao-axilas-virilha/fachada.webp',
+    alt: 'Fachada da Sandydepil, em Santa Maria – DF',
+    caption: 'A Sandydepil, onde o curso acontece',
+    position: 'object-top',
+  },
+  {
+    src: '/images/cursos/depilacao-axilas-virilha/sala-atendimento.webp',
+    alt: 'Sala de atendimento usada durante o curso presencial',
+    caption: 'Sala de atendimento usada na prática',
+    position: 'object-center',
+  },
+  {
+    src: '/images/cursos/depilacao-axilas-virilha/recepcao.webp',
+    alt: 'Recepção da Sandydepil',
+    caption: 'Recepção da Sandydepil',
+    position: 'object-center',
+  },
 ]
 
 // Perguntas que mais aparecem antes de fechar — o objetivo é que quem chega
@@ -405,13 +423,12 @@ export default function CursoDepilacaoAxilasVirilha() {
                 Curso presencial de 1 dia
               </span>
               <h1 className="mt-4 font-display text-[32px] font-normal leading-[1.15] text-ink sm:text-5xl lg:text-[3.2rem]">
-                Domine a técnica de depilação em{' '}
-                <span className="italic text-rose-500">axilas e virilha</span> em apenas 1 dia
+                Curso Presencial de Depilação de{' '}
+                <span className="italic text-rose-500">Virilha e Axilas</span> em Santa Maria-DF
               </h1>
               <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-ink/65 sm:text-base">
-                Curso presencial e prático, direto na Sandydepil, com quem atende há mais de{' '}
-                {business.yearsOfExperience} anos: aprenda a técnica completa, pratique em modelo
-                real sob supervisão e saia com certificado no mesmo dia.
+                Aprenda na prática com acompanhamento individual e saia preparada para atender
+                suas primeiras clientes.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
