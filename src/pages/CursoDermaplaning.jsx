@@ -14,6 +14,7 @@ import Reveal, { RevealGroup, RevealItem } from '../components/Reveal'
 import ScrollToTop from '../components/ScrollToTop'
 import VideoTestimonial from '../components/VideoTestimonial'
 import { business, whatsappLink, videoTestimonials } from '../data/site'
+import { trackWhatsApp } from '../lib/metaPixel'
 
 /**
  * Landing de venda do curso de Dermaplaning — página autônoma, fora do
@@ -175,6 +176,9 @@ export default function CursoDermaplaning() {
     if (VIDEO_EMBED_URL) {
       setVideoAtivo(true)
     } else {
+      // Fallback sem vídeo: vira um contato de WhatsApp. Como usa window.open,
+      // o listener global do Pixel não enxerga — registramos na mão.
+      trackWhatsApp({ origem: 'Player de apresentação', pathname: '/cursos/dermaplaning' })
       window.open(whatsappCurso('Olá! Gostaria de assistir à apresentação do curso de Dermaplaning. 💗'), '_blank', 'noopener,noreferrer')
     }
   }

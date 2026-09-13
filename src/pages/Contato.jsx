@@ -4,6 +4,7 @@ import useSeo from '../hooks/useSeo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import { business, procedures, whatsappLink } from '../data/site'
+import { trackWhatsApp } from '../lib/metaPixel'
 
 const fieldClass =
   'mt-2 w-full rounded-xl border border-rose-100 bg-offwhite px-4 py-3.5 text-[15px] text-ink placeholder:text-ink/35 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200'
@@ -34,6 +35,10 @@ export default function Contato() {
       form.procedure && `Tenho interesse em: ${form.procedure}.`,
       form.message && `\n${form.message}`,
     ].filter(Boolean)
+
+    // Abre por window.open, então o listener global do Pixel (que só enxerga
+    // cliques em <a>) não pega este caso — registramos na mão.
+    trackWhatsApp({ origem: 'Formulário de contato', pathname: '/contato' })
 
     window.open(whatsappLink(parts.join(' ')), '_blank', 'noopener,noreferrer')
   }
