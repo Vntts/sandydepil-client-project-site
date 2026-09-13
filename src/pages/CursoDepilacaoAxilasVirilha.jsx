@@ -116,6 +116,17 @@ const beneficios = [
   },
 ]
 
+// Números reais já usados em outras páginas do site (business.rating,
+// business.reviewCount, business.yearsOfExperience — mesma fonte única de
+// verdade). O total de alunas formadas considera todos os cursos presenciais
+// e particulares já ministrados pela Sandydepil, não só esta turma.
+const statsAlunas = [
+  { valor: '+100', label: 'Alunas formadas' },
+  { valor: `+${business.yearsOfExperience}`, label: 'Anos de experiência' },
+  { valor: business.rating.toFixed(1), label: '★★★★★ no Google' },
+  { valor: `+${business.reviewCount}`, label: 'Avaliações no Google' },
+]
+
 // TODO: a Sandy já deu este curso de forma particular antes desta turma
 // presencial, mas não há fotos/nomes documentados dessas alunas. Os textos
 // abaixo resumem o retorno real que elas deram, sem inventar nome — troque
@@ -560,6 +571,42 @@ export default function CursoDepilacaoAxilasVirilha() {
                 Quero aprender com a Sandy
               </a>
             </Reveal>
+          </div>
+        </section>
+
+        {/* +100 ALUNAS FORMADAS — reforça que a Sandy já forma alunas há
+            anos (não é a primeira turma dela), com números reais já usados
+            em outras páginas do site. Fica logo após "Quem é a Sandy" para
+            embasar a autoridade que acabou de ser apresentada. */}
+        <section className="section-y-tight">
+          <div className="container-luxe">
+            <Reveal className="mx-auto max-w-xl text-center">
+              <span className="eyebrow">Experiência comprovada</span>
+              <h2 className="mt-3 font-display text-[22px] leading-tight text-ink sm:text-3xl">
+                Mais de <span className="italic text-rose-500">100 alunas</span> já foram formadas
+                pela Sandydepil
+              </h2>
+              <p className="mt-3 text-[13.5px] leading-relaxed text-ink/60">
+                Considerando todos os cursos presenciais e particulares já ministrados pela Sandy
+                — você não vai ser a primeira aluna dela.
+              </p>
+            </Reveal>
+
+            <RevealGroup
+              className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-4 rounded-[28px] border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-beige/60 p-7 shadow-soft sm:grid-cols-4 sm:p-9"
+              stagger={0.08}
+            >
+              {statsAlunas.map((s) => (
+                <RevealItem key={s.label}>
+                  <div className="text-center">
+                    <strong className="block bg-rose-gradient bg-clip-text font-display text-[26px] italic font-semibold text-transparent sm:text-[30px]">
+                      {s.valor}
+                    </strong>
+                    <span className="mt-1 block text-[11.5px] leading-snug text-ink/60">{s.label}</span>
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
           </div>
         </section>
 
