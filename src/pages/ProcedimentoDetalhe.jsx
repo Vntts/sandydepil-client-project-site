@@ -47,6 +47,25 @@ export default function ProcedimentoDetalhe() {
             },
           },
           areaServed: { '@type': 'City', name: 'Santa Maria' },
+          // Quando o procedimento tem regiões, cada uma entra como item do
+          // catálogo: é o que permite ao Google associar a clínica a buscas
+          // por "depilação de virilha" e não só a "depilação".
+          ...(procedure.regions?.length
+            ? {
+                hasOfferCatalog: {
+                  '@type': 'OfferCatalog',
+                  name: `${procedure.name} — regiões atendidas`,
+                  itemListElement: procedure.regions.map((region) => ({
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: region.name,
+                      description: region.text,
+                    },
+                  })),
+                },
+              }
+            : {}),
         }
       : undefined,
   })
@@ -130,6 +149,35 @@ export default function ProcedimentoDetalhe() {
                 ))}
               </ul>
             </Reveal>
+
+            {/* Regiões atendidas — só existe em procedimentos que têm `regions`
+                (hoje, a depilação com cera). Cada região é um <h3> com o nome
+                exato que as pessoas buscam ("depilação de virilha"), em vez de
+                ficarem diluídas numa frase única. */}
+            {procedure.regions?.length > 0 && (
+              <Reveal delay={0.1} className="mt-10">
+                <h2 className="font-display text-[20px] text-ink sm:text-2xl">
+                  Regiões atendidas
+                </h2>
+                <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink/55">
+                  Cada região pede uma cera e uma técnica diferente — o tempo de sessão e o
+                  cuidado mudam junto.
+                </p>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  {procedure.regions.map((region) => (
+                    <div
+                      key={region.name}
+                      className="rounded-2xl border border-rose-100 bg-white p-5"
+                    >
+                      <h3 className="font-display text-[16px] text-ink">{region.name}</h3>
+                      <p className="mt-2 text-[13.5px] leading-relaxed text-ink/70">
+                        {region.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
 
             {/* Indicações */}
             <Reveal delay={0.12} className="mt-10">

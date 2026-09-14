@@ -83,12 +83,16 @@ export default function AboutPreview() {
               <p>
                 Desde {business.foundedYear}, a{' '}
                 <strong className="font-medium text-ink">{business.fullName}</strong> atua em Santa
-                Maria – DF oferecendo serviços de depilação e estética com atendimento humanizado,
-                técnicas atualizadas e foco em realçar a beleza natural, promovendo autoestima,
-                bem-estar e confiança.
+                Maria – DF com <strong className="font-medium text-ink">depilação com cera</strong>{' '}
+                — axilas, virilha, pernas e rosto — e procedimentos de estética facial e corporal,
+                com atendimento humanizado, técnicas atualizadas e foco em realçar a beleza natural.
               </p>
               <p>
-                Ao longo dos anos, esse compromisso com a excelência e o atendimento humanizado
+                São mais de{' '}
+                <strong className="font-medium text-ink">
+                  {business.appointments / 1000} mil atendimentos
+                </strong>{' '}
+                em {business.yearsInProfession} anos de profissão. Esse compromisso com a excelência
                 construiu muito mais do que uma empresa: construiu relações de confiança, avaliação
                 por avaliação. Hoje somos nota 5,0 no Google com +{business.reviewCount} avaliações.
               </p>

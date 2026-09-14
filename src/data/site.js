@@ -9,6 +9,14 @@ export const business = {
   tagline: 'Depilação e Estética',
   foundedYear: 2013,
   yearsOfExperience: new Date().getFullYear() - 2013,
+  // A Sandra começou a atuar com depilação em 2011, dois anos antes de abrir a
+  // clínica (ver `timeline`). São números diferentes de propósito: o da clínica
+  // ("desde 2013") e o da trajetória da profissional, que é o que sustenta o
+  // volume de atendimentos abaixo.
+  careerStartYear: 2011,
+  yearsInProfession: new Date().getFullYear() - 2011,
+  /** Atendimentos acumulados desde o início da trajetória. */
+  appointments: 15000,
   phone: '(61) 98484-3437',
   phoneRaw: '5561984843437',
   email: 'sandydepil26@gmail.com',
@@ -93,9 +101,9 @@ export const navLinks = [
 export const stats = [
   {
     icon: 'Award',
-    value: business.yearsOfExperience,
+    value: business.yearsInProfession,
     suffix: '+',
-    label: 'Anos de experiência',
+    label: 'Anos de profissão',
   },
   {
     icon: 'Star',
@@ -111,7 +119,7 @@ export const stats = [
   },
   {
     icon: 'Flower2',
-    value: 5000,
+    value: business.appointments,
     suffix: '+',
     separator: '.',
     label: 'Atendimentos',
@@ -119,7 +127,11 @@ export const stats = [
 ]
 
 export const credentials = [
-  { icon: 'Award', label: `Desde ${business.foundedYear}`, detail: 'Mais de uma década em Santa Maria – DF' },
+  {
+    icon: 'Award',
+    label: `+${business.appointments / 1000} mil atendimentos`,
+    detail: `Em ${business.yearsInProfession} anos de profissão, desde ${business.foundedYear} em Santa Maria – DF`,
+  },
   { icon: 'Star', label: 'Nota 5,0 no Google', detail: `${business.reviewCount} avaliações verificadas` },
   { icon: 'ShieldCheck', label: 'Protocolos de higiene', detail: 'Material esterilizado e descartável' },
   { icon: 'Gem', label: 'Produtos profissionais', detail: 'Marcas de uso exclusivo em clínica' },
@@ -166,17 +178,27 @@ export const professional = {
   role: 'Esteticista responsável · Fundadora',
   photo: '/Especialista-sandra-ventura.webp',
   bio: [
-    `Fundou a Sandydepil em ${business.foundedYear}, com pouco mais que uma maca, formação técnica e a convicção de que estética séria se faz com escuta antes da técnica.`,
-    `Mais de ${business.yearsOfExperience} anos depois, segue atendendo pessoalmente e acompanhando cada protocolo do começo ao fim — é essa continuidade que permite ajustar o tratamento à resposta real da pele de cada cliente.`,
-    'Mantém formação continuada em procedimentos faciais e corporais, acompanhando o que há de novo sem abandonar o que já provou funcionar.',
+    `Começou a trabalhar com depilação com cera em ${business.careerStartYear} e fundou a Sandydepil em ${business.foundedYear}, com pouco mais que uma maca, formação técnica e a convicção de que estética séria se faz com escuta antes da técnica.`,
+    `São mais de ${business.appointments / 1000} mil atendimentos em ${business.yearsInProfession} anos de profissão — depilação com cera em axilas, virilha, pernas e rosto, além dos procedimentos faciais e corporais. Segue atendendo pessoalmente e acompanhando cada protocolo do começo ao fim.`,
+    'Hoje também ensina: ministra o curso presencial de depilação em axilas e virilha para outras profissionais, na própria clínica em Santa Maria – DF.',
   ],
   credentials: [
-    'Graduação em Estética e Cosmética', // TODO: confirmar
+    `Depilação com cera desde ${business.careerStartYear} — técnica espanhola, cera quente, morna e em fita`,
+    'Graduação em Embelezamento e Estética (2017)',
+    'Professora do curso presencial de Depilação em Axilas e Virilha',
     'Especialização em protocolos faciais', // TODO: confirmar
     'Capacitação em drenagem linfática e terapias corporais', // TODO: confirmar
-    'Atualização contínua em produtos e técnicas profissionais',
   ],
   quote: 'Antes de qualquer procedimento vem a escuta. É isso que define o resultado.',
+  /** Termos que descrevem a atuação — alimentam o schema Person no index.html. */
+  knowsAbout: [
+    'Depilação com cera',
+    'Depilação em axilas e virilha',
+    'Limpeza de pele',
+    'Dermaplaning',
+    'Design de sobrancelhas',
+    'Drenagem linfática',
+  ],
 }
 
 /* ------------------------------------------------------------------ */
@@ -320,18 +342,52 @@ export const procedures = [
     ],
   },
   {
-    slug: 'epilacao-com-cera',
+    // O nome técnico do procedimento é "epilação", mas quem procura o serviço
+    // busca por "depilação" — é assim que o site, a URL e os dados estruturados
+    // precisam falar. A URL antiga (/procedimentos/epilacao-com-cera) tem
+    // redirect 301 no vercel.json, então nada do que já foi indexado se perde.
+    slug: 'depilacao-com-cera',
     category: 'corporais',
-    name: 'Epilação com Cera',
-    shortName: 'Epilação com Cera',
-    summary: 'Método profissional com foco em conforto, segurança e pele lisa na hora.',
+    name: 'Depilação com Cera',
+    shortName: 'Depilação com Cera',
+    summary:
+      'O procedimento que deu origem à clínica: depilação com cera em axilas, virilha, pernas e rosto, com foco em conforto, segurança e pele lisa na hora.',
     image: '/images/procedimentos/Procedimento-corporal.webp',
     duration: '15 a 60 minutos, conforme a região',
     sessions: 'A cada 25 a 30 dias',
     benefits: ['Método profissional', 'Pele lisa imediatamente', 'Conforto e segurança'],
     description: [
-      'A epilação com cera remove o pelo desde a raiz, o que garante pele lisa por muito mais tempo do que a lâmina. A técnica correta faz toda a diferença: temperatura adequada, direção certa da remoção e produto compatível com a sensibilidade de cada região.',
+      `A depilação com cera (ou epilação) remove o pelo desde a raiz, o que garante pele lisa por muito mais tempo do que a lâmina. A técnica correta faz toda a diferença: temperatura adequada, direção certa da remoção e produto compatível com a sensibilidade de cada região.`,
+      `É o procedimento que deu origem à Sandydepil: ${professional.name} trabalha com depilação com cera desde ${business.careerStartYear} e hoje ensina a técnica para outras profissionais.`,
       'Trabalhamos com material descartável e protocolos rigorosos de higiene. Nenhum aplicador retorna ao pote de cera — regra sem exceção.',
+    ],
+    /**
+     * Regiões atendidas. Existem como dado (e não como texto corrido) porque é
+     * assim que a busca acontece: quase ninguém procura "depilação"; procura
+     * "depilação de virilha", "depilação de axilas". Cada item vira um bloco
+     * próprio na página, com o termo real que a pessoa digitou.
+     */
+    regions: [
+      {
+        name: 'Depilação de axilas',
+        text: 'Região pequena e de pelo grosso: a sessão leva cerca de 15 minutos e a cera quente é a escolha padrão, porque abre o folículo e reduz o desconforto.',
+      },
+      {
+        name: 'Depilação de virilha',
+        text: 'Simples, cavada ou completa. É a região mais sensível do corpo, e é onde a experiência da profissional mais aparece: sentido de remoção correto, cera na temperatura certa e pele bem esticada.',
+      },
+      {
+        name: 'Depilação de pernas',
+        text: 'Meia perna ou perna inteira, com cera em fita para cobrir área grande sem agredir a pele. Combina bem com a virilha na mesma sessão.',
+      },
+      {
+        name: 'Depilação facial',
+        text: 'Buço, queixo e laterais do rosto, com cera específica para pele fina. Feita com cuidado redobrado em quem usa ácidos ou faz tratamento facial.',
+      },
+      {
+        name: 'Depilação masculina',
+        text: 'Costas, peito, abdômen e nuca. Atendimento reservado, com a mesma técnica e os mesmos protocolos de higiene.',
+      },
     ],
     indications: [
       'Todas as regiões do corpo e do rosto',
@@ -725,8 +781,9 @@ export const results = [
     image: '/images/resultados/dermaplaning.webp',
   },
   {
-    title: 'Epilação com Cera',
-    procedure: 'epilacao-com-cera',
+    title: 'Depilação com Cera',
+    // O arquivo da imagem continua com o nome antigo — só o slug mudou.
+    procedure: 'depilacao-com-cera',
     description: 'Pele lisa e uniforme logo após a sessão, sem irritação.',
     image: '/images/resultados/epilacao-com-cera.webp',
   },

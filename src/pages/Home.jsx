@@ -27,8 +27,8 @@ import FinalCTA from '../components/FinalCTA'
  */
 export default function Home() {
   useSeo({
-    title: 'Clínica de Estética em Santa Maria – DF',
-    description: `Clínica de estética em Santa Maria – DF desde ${business.foundedYear}, atendendo o Distrito Federal. Limpeza de pele, dermaplaning e drenagem linfática. Nota 5,0 no Google.`,
+    title: 'Depilação com Cera e Estética em Santa Maria – DF',
+    description: `Depilação com cera em axilas, virilha, pernas e rosto em Santa Maria – DF, desde ${business.foundedYear}. Mais de ${business.appointments / 1000} mil atendimentos em ${business.yearsInProfession} anos de profissão. Também limpeza de pele, dermaplaning e drenagem linfática. Nota 5,0 no Google.`,
     path: '/',
   })
 
