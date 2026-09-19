@@ -352,6 +352,12 @@ export const procedures = [
     shortName: 'Depilação com Cera',
     summary:
       'O procedimento que deu origem à clínica: depilação com cera em axilas, virilha, pernas e rosto, com foco em conforto, segurança e pele lisa na hora.',
+    // Descrição dedicada para <meta name="description">: a construída a partir
+    // do `summary` (ver ProcedimentoDetalhe.jsx) passava de 270 caracteres e o
+    // Google corta por volta de 155-160, cortando a frase no meio. Esta fica
+    // dentro do limite e já deixa claro que o serviço é só para mulheres.
+    metaDescription:
+      'Depilação com cera em Santa Maria – DF, para mulheres: axilas, virilha, pernas e rosto. Técnica profissional, conforto e pele lisa na hora.',
     image: '/images/procedimentos/Procedimento-corporal.webp',
     duration: '15 a 60 minutos, conforme a região',
     sessions: 'A cada 25 a 30 dias',
@@ -383,10 +389,6 @@ export const procedures = [
       {
         name: 'Depilação facial',
         text: 'Buço, queixo e laterais do rosto, com cera específica para pele fina. Feita com cuidado redobrado em quem usa ácidos ou faz tratamento facial.',
-      },
-      {
-        name: 'Depilação masculina',
-        text: 'Costas, peito, abdômen e nuca. Atendimento reservado, com a mesma técnica e os mesmos protocolos de higiene.',
       },
     ],
     indications: [
@@ -851,7 +853,7 @@ export const faqs = [
   },
   {
     q: 'Atendem homens?',
-    a: 'Sim. Vários procedimentos faciais, corporais e de depilação são realizados em clientes homens.',
+    a: 'Atendemos homens em procedimentos faciais e em ventosaterapia. Depilação, drenagem linfática e massagem redutora são exclusivos para o público feminino.',
   },
   {
     q: 'Posso fazer procedimentos estando grávida?',

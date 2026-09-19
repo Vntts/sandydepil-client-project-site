@@ -24,7 +24,8 @@ export default function ProcedimentoDetalhe() {
   useSeo({
     title: procedure ? `${procedure.name} em Santa Maria – DF` : 'Procedimento não encontrado',
     description: procedure
-      ? `${procedure.summary} Atendimento em Santa Maria – DF na ${business.fullName}. Duração aproximada: ${procedure.duration}.`
+      ? procedure.metaDescription ||
+        `${procedure.summary} Atendimento em Santa Maria – DF na ${business.fullName}. Duração aproximada: ${procedure.duration}.`
       : 'O procedimento que você procura não existe ou foi movido.',
     path: `/procedimentos/${slug}`,
     image: procedure?.image,
