@@ -403,6 +403,75 @@ export const procedures = [
       'Esfolie levemente a partir do terceiro dia para prevenir foliculite',
       'Hidrate a pele diariamente',
     ],
+    /**
+     * Comparativo cera x lâmina x laser — conteúdo pensado para quem chega
+     * pela busca "depilação com cera ou laser" ainda em dúvida sobre o
+     * método. `highlight` destaca o card da cera na página.
+     */
+    comparisons: [
+      {
+        name: 'Depilação com cera',
+        highlight: true,
+        points: [
+          'Remove o pelo da raiz: pele lisa por 25 a 30 dias',
+          'Sessão rápida, sem plano de tratamento longo',
+          'Investimento por sessão menor que o laser',
+        ],
+      },
+      {
+        name: 'Lâmina',
+        points: [
+          'Corta na superfície: o pelo volta em 2 a 3 dias, mais grosso ao toque',
+          'Atrito diário aumenta o risco de irritação e foliculite',
+          'Precisa repetir com muito mais frequência',
+        ],
+      },
+      {
+        name: 'Depilação a laser',
+        points: [
+          'Reduz o pelo de forma definitiva, mas em várias sessões ao longo de meses',
+          'Investimento inicial mais alto — resultado depende do tipo de pelo e pele',
+          'Enquanto o tratamento está em andamento, a cera continua sendo usada entre as sessões',
+        ],
+      },
+    ],
+    /**
+     * FAQ específico deste procedimento — aparece ao final da página e
+     * também vira dados estruturados FAQPage (ver ProcedimentoDetalhe.jsx).
+     * Conteúdo único, respondendo buscas de cauda longa.
+     */
+    procedureFaqs: [
+      {
+        q: 'A depilação com cera dói muito?',
+        a: 'Há desconforto, principalmente nas primeiras sessões e em regiões mais sensíveis como a virilha. A temperatura certa da cera, a técnica de remoção e a experiência da profissional reduzem bastante essa sensação, e o incômodo diminui com a continuidade.',
+      },
+      {
+        q: 'Quanto tempo dura o efeito da depilação com cera?',
+        a: 'Em média de 25 a 30 dias, porque o pelo é removido da raiz e precisa nascer de novo. O tempo exato varia de pessoa para pessoa, conforme o ciclo de crescimento do pelo em cada região.',
+      },
+      {
+        q: 'Posso fazer depilação com cera menstruada?',
+        a: 'Pode, mas a sensibilidade costuma ser maior nesse período. Se puder escolher, prefira agendar para outros dias do ciclo — e avise a profissional para ajustar o ritmo do atendimento.',
+      },
+      {
+        q: 'Como evitar pelos encravados depois da cera?',
+        a: 'Esfoliar levemente a pele a partir do terceiro dia e manter a hidratação diária são os cuidados que mais fazem diferença. Roupas muito justas na região tratada nas primeiras horas também aumentam o risco.',
+      },
+      {
+        q: 'Posso tomar sol ou malhar depois da sessão?',
+        a: 'Evite sol, sauna, piscina e suor intenso nas primeiras 24 horas. Os poros ficam abertos logo após a cera, e o calor ou o atrito nesse período podem irritar a pele.',
+      },
+    ],
+    // Depoimento real reaproveitado de /public/videos/depoimentos — já
+    // gravado, só ainda não estava ligado a nenhuma página de procedimento.
+    videoTestimonial: {
+      video: '/videos/depoimentos/depoimento-3.mp4',
+      poster: '/images/depoimentos/depoimento-3-poster.webp',
+      name: 'Cliente Sandydepil',
+    },
+    // Mostra o formulário de captação de lead (nome + WhatsApp) ao final da
+    // página. Ver src/components/LeadCaptureForm.jsx.
+    leadCapture: true,
   },
   {
     slug: 'drenagem-linfatica',

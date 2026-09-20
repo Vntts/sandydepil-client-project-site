@@ -3,23 +3,80 @@ import { AlertCircle, ArrowRight, Check, Clock, RefreshCw } from 'lucide-react'
 import useSeo from '../hooks/useSeo'
 import PageHero from '../components/PageHero'
 import Reveal, { RevealGroup, RevealItem } from '../components/Reveal'
-import BeforeAfter from '../components/BeforeAfter'
 import ProcedureCard from '../components/ProcedureCard'
 import RailHint from '../components/RailHint'
 import FinalCTA from '../components/FinalCTA'
+import VideoTestimonial from '../components/VideoTestimonial'
+import FaqAccordion from '../components/FaqAccordion'
+import LeadCaptureForm from '../components/LeadCaptureForm'
 import NotFound from './NotFound'
 import {
   business,
   findProcedure,
   procedureCategories,
   procedures,
-  results,
   whatsappLink,
 } from '../data/site'
 
 export default function ProcedimentoDetalhe() {
   const { slug } = useParams()
   const procedure = findProcedure(slug)
+
+  const serviceJsonLd = procedure
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: procedure.name,
+        description: procedure.summary,
+        provider: {
+          '@type': 'BeautySalon',
+          name: business.fullName,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.address.street,
+            addressLocality: business.address.city,
+            addressRegion: business.address.state,
+            postalCode: business.address.zip,
+            addressCountry: 'BR',
+          },
+        },
+        areaServed: { '@type': 'City', name: 'Santa Maria' },
+        // Quando o procedimento tem regiões, cada uma entra como item do
+        // catálogo: é o que permite ao Google associar a clínica a buscas
+        // por "depilação de virilha" e não só a "depilação".
+        ...(procedure.regions?.length
+          ? {
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: `${procedure.name} — regiões atendidas`,
+                itemListElement: procedure.regions.map((region) => ({
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: region.name,
+                    description: region.text,
+                  },
+                })),
+              },
+            }
+          : {}),
+      }
+    : null
+
+  // FAQPage também vira rich result no Google quando o procedimento tem
+  // `procedureFaqs` (hoje só depilação com cera) — mesmo conteúdo mostrado
+  // na página, em formato estruturado.
+  const faqJsonLd = procedure?.procedureFaqs?.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: procedure.procedureFaqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: { '@type': 'Answer', text: faq.a },
+        })),
+      }
+    : null
 
   useSeo({
     title: procedure ? `${procedure.name} em Santa Maria – DF` : 'Procedimento não encontrado',
@@ -29,46 +86,7 @@ export default function ProcedimentoDetalhe() {
       : 'O procedimento que você procura não existe ou foi movido.',
     path: `/procedimentos/${slug}`,
     image: procedure?.image,
-    jsonLd: procedure
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          name: procedure.name,
-          description: procedure.summary,
-          provider: {
-            '@type': 'BeautySalon',
-            name: business.fullName,
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: business.address.street,
-              addressLocality: business.address.city,
-              addressRegion: business.address.state,
-              postalCode: business.address.zip,
-              addressCountry: 'BR',
-            },
-          },
-          areaServed: { '@type': 'City', name: 'Santa Maria' },
-          // Quando o procedimento tem regiões, cada uma entra como item do
-          // catálogo: é o que permite ao Google associar a clínica a buscas
-          // por "depilação de virilha" e não só a "depilação".
-          ...(procedure.regions?.length
-            ? {
-                hasOfferCatalog: {
-                  '@type': 'OfferCatalog',
-                  name: `${procedure.name} — regiões atendidas`,
-                  itemListElement: procedure.regions.map((region) => ({
-                    '@type': 'Offer',
-                    itemOffered: {
-                      '@type': 'Service',
-                      name: region.name,
-                      description: region.text,
-                    },
-                  })),
-                },
-              }
-            : {}),
-        }
-      : undefined,
+    jsonLd: serviceJsonLd ? (faqJsonLd ? [serviceJsonLd, faqJsonLd] : serviceJsonLd) : undefined,
   })
 
   if (!procedure) return <NotFound />
@@ -77,7 +95,6 @@ export default function ProcedimentoDetalhe() {
   const related = procedures
     .filter((p) => p.category === procedure.category && p.slug !== procedure.slug)
     .slice(0, 3)
-  const relatedResult = results.find((r) => r.procedure === procedure.slug)
 
   return (
     <>
@@ -113,6 +130,19 @@ export default function ProcedimentoDetalhe() {
           Agendar este procedimento
         </a>
       </PageHero>
+
+      {/* Captação de lead — logo abaixo do hero, antes de qualquer outro
+          conteúdo, para quem não vai rolar a página inteira antes de deixar
+          contato. Só aparece nas páginas marcadas com `leadCapture`. */}
+      {procedure.leadCapture && (
+        <section className="bg-cream pb-2 pt-12 sm:pt-16">
+          <div className="container-luxe">
+            <Reveal variant="fadeUp" className="mx-auto max-w-2xl">
+              <LeadCaptureForm procedureName={procedure.name} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="bg-cream section-y">
         <div className="container-luxe grid gap-10 lg:grid-cols-3 lg:gap-16">
@@ -180,6 +210,56 @@ export default function ProcedimentoDetalhe() {
               </Reveal>
             )}
 
+            {/* Comparativo cera x lâmina x laser — só existe quando o
+                procedimento tem `comparisons` (hoje, depilação com cera).
+                Reforça a escolha de quem chegou pela busca ainda em dúvida
+                entre métodos. */}
+            {procedure.comparisons?.length > 0 && (
+              <Reveal delay={0.11} className="mt-10">
+                <h2 className="font-display text-[20px] text-ink sm:text-2xl">
+                  Cera, lâmina ou laser?
+                </h2>
+                <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink/55">
+                  Cada método tem seu lugar — veja por que a cera costuma ser a escolha mais
+                  equilibrada.
+                </p>
+                <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                  {procedure.comparisons.map((option) => (
+                    <div
+                      key={option.name}
+                      className={`rounded-2xl border p-5 ${
+                        option.highlight
+                          ? 'border-rose-300 bg-rose-50/60 shadow-soft'
+                          : 'border-rose-100 bg-white'
+                      }`}
+                    >
+                      {option.highlight && (
+                        <span className="inline-flex items-center rounded-full bg-rose-gradient px-3 py-1 text-[10px] font-medium uppercase tracking-luxe text-white">
+                          Recomendado
+                        </span>
+                      )}
+                      <h3
+                        className={`font-display text-[16px] text-ink ${option.highlight ? 'mt-3' : ''}`}
+                      >
+                        {option.name}
+                      </h3>
+                      <ul className="mt-3 space-y-2">
+                        {option.points.map((point) => (
+                          <li
+                            key={point}
+                            className="flex items-start gap-2 text-[13px] leading-relaxed text-ink/70"
+                          >
+                            <Check size={13} className="mt-0.5 shrink-0 text-rose-400" />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+
             {/* Indicações */}
             <Reveal delay={0.12} className="mt-10">
               <h2 className="font-display text-[20px] text-ink sm:text-2xl">
@@ -219,22 +299,37 @@ export default function ProcedimentoDetalhe() {
               </ul>
             </Reveal>
 
-            {/* Resultado */}
-            {relatedResult && (
-              <Reveal delay={0.2} className="mt-12">
-                <h2 className="font-display text-[20px] text-ink sm:text-2xl">Resultado real</h2>
+            {/* Depoimento em vídeo — só existe quando o procedimento tem
+                `videoTestimonial` (hoje, depilação com cera). */}
+            {procedure.videoTestimonial && (
+              <Reveal delay={0.22} className="mt-12">
+                <h2 className="font-display text-[20px] text-ink sm:text-2xl">
+                  Quem já fez, conta como foi
+                </h2>
                 <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink/55">
-                  {relatedResult.description}
+                  Depoimento real de quem já passou pela experiência na Sandydepil.
                 </p>
-                <div className="mt-5 max-w-xl">
-                  <BeforeAfter
-                    before={relatedResult.before}
-                    after={relatedResult.after}
-                    alt={relatedResult.title}
+                <div className="mt-5 max-w-xs">
+                  <VideoTestimonial
+                    src={procedure.videoTestimonial.video}
+                    poster={procedure.videoTestimonial.poster}
+                    name={procedure.videoTestimonial.name}
                   />
                 </div>
               </Reveal>
             )}
+
+            {/* FAQ específico do procedimento — mesma lista que alimenta o
+                FAQPage em jsonLd, acima. */}
+            {procedure.procedureFaqs?.length > 0 && (
+              <Reveal delay={0.26} className="mt-12">
+                <h2 className="font-display text-[20px] text-ink sm:text-2xl">
+                  Perguntas frequentes sobre {procedure.name.toLowerCase()}
+                </h2>
+                <FaqAccordion items={procedure.procedureFaqs} />
+              </Reveal>
+            )}
+
           </div>
 
           {/* Sidebar — no mobile é só um bloco de orçamento no fim */}
